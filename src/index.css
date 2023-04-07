@@ -60,6 +60,10 @@ h1 {
   height: calc(100vh - 50px);
 }
 
+.full-page canvas {
+  margin: auto;
+}
+
 table {
   border-collapse: collapse;
   margin: 20px auto;

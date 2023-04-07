@@ -60,7 +60,6 @@ export const App: React.FunctionComponent<unknown> = (props) => {
   return (
     <>
       <div className="app">
-        {/* <h1>TSudoku</h1> */}
         <img className="logo" src={Logo} alt="logo" />
 
         {end && (
