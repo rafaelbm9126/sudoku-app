@@ -29,7 +29,7 @@ export const App: React.FunctionComponent<unknown> = (props) => {
   const [rstrcount, setRstrcount] = React.useState(0);
 
   React.useEffect(() => {
-    setTable(sudoku.generateSudoku([1, 50, 80][config]));
+    setTable(sudoku.generateSudoku([30, 50, 80][config]));
   }, [config]);
 
   React.useEffect(() => {
