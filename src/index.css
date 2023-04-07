@@ -1,0 +1,155 @@
+:root {
+  --size-item: 50px;
+}
+
+@media screen and (max-width: 500px) {
+  :root {
+    --size-item: 30px;
+  }
+}
+
+html {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: black;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  background-image: url(https://t3.ftcdn.net/jpg/03/36/89/24/360_F_336892491_aZIazKCweTtVXT4BT8I2OxOlNwk1JV7j.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 50px);
+}
+
+table {
+  border-collapse: collapse;
+  margin: 20px auto;
+}
+
+td {
+  border: 1px solid black;
+  max-width: var(--size-item);
+  min-width: var(--size-item);
+  max-height: var(--size-item);
+  text-align: center;
+  font-size: 24px;
+  padding: 0;
+}
+
+td div {
+  max-width: var(--size-item);
+  max-height: var(--size-item);
+  line-height: var(--size-item);
+  color: black;
+}
+
+.empty,
+.empty * {
+  outline: none;
+}
+
+.empty:hover {
+  background-color: #b3d9ff;
+}
+
+.empty div {
+  color: slategray;
+}
+
+.empty.error div {
+  color: rgba(230, 85, 85, 0.8);
+}
+
+.topper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.config {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  justify-content: flex-start;
+  background-color: #b3d9ff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.config button {
+  height: 50px;
+  cursor: pointer;
+}
+
+.config fieldset {
+  display: flex;
+  flex-direction: column;
+}
+
+.config fieldset label {
+  margin: 0 0 10px 0;
+  cursor: pointer;
+}
+
+.btn-restart {
+  width: 100%;
+  height: 50px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  color: rgb(129, 129, 129);
+  font-style: italic;
+  font-weight: 100;
+  font-size: 12px;
+}
+
+.logo {
+  width: 500px;
+  margin: 0 0 50px 0;
+}
+
+@media screen and (max-width: 500px) {
+  .logo {
+    width: 300px;
+  }
+}
