@@ -1,6 +1,7 @@
 import React from "react";
 import moment from "moment";
 import { ItemSoduku } from "../functions/sudoku";
+import { ShowKeyboard } from "./keyboard";
 
 interface Props {
   attempt: number;
@@ -10,6 +11,8 @@ interface Props {
   setTable: React.Dispatch<React.SetStateAction<ItemSoduku[][]>>;
   end: boolean;
   rstrcount: number;
+  editable: boolean;
+  setKeyboard: React.Dispatch<React.SetStateAction<ShowKeyboard | null>>;
 }
 
 function countErrors(table: ItemSoduku[][]): number {
@@ -95,9 +98,14 @@ export const Display: React.FunctionComponent<Props> = (props) => {
                   className={`${item.static && "empty"} ${
                     item.value !== 0 && item.iserror && "error"
                   }`}
+                  onClick={() =>
+                    !props.editable && props.setKeyboard({ itr, itd })
+                  }
                 >
                   <div
-                    contentEditable={item.static && !props.end}
+                    contentEditable={
+                      item.static && !props.end && props.editable
+                    }
                     suppressContentEditableWarning={true}
                     onKeyDown={(event) =>
                       changeTable(
@@ -117,7 +125,7 @@ export const Display: React.FunctionComponent<Props> = (props) => {
                       }
                     }}
                   >
-                    {!item.static ? item.value : ""}
+                    {item.value !== 0 ? item.value : ""}
                   </div>
                 </td>
               ))}

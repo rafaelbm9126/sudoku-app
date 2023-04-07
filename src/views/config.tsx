@@ -9,26 +9,47 @@ interface Props {
 export const Config: React.FunctionComponent<Props> = (props) => {
   return (
     <>
-      <div className="config">
+      <div className="card is-fullwidth">
+        <div className="card-content">
+          <div className="content">
+            <div className="control vertical">
+              {[0, 1, 2].map((radio) => (
+                <label
+                  className="radio"
+                  key={`radio-${radio}`}
+                  htmlFor={`rlebel-${radio}`}
+                >
+                  <input
+                    type="radio"
+                    name="level"
+                    className="radio"
+                    id={`rlebel-${radio}`}
+                    value={radio}
+                    defaultChecked={props.config === radio}
+                    onChange={() => props.setConfig(radio)}
+                  />
+                  &nbsp;&nbsp;
+                  <span>{["Eassy", "Medium", "Hard"][radio]}</span>
+                </label>
+              ))}
+            </div>
+            <br />
+            <button
+              className="button is-primary is-light is-medium is-fullwidth"
+              onClick={() => props.setStart(true)}
+            >
+              Start
+            </button>
+          </div>
+        </div>
+      </div>
+      {/* <div className="config">
         <fieldset>
           <legend>Difficulty</legend>
-          {[0, 1, 2].map((radio) => (
-            <label htmlFor={`rlebel-${radio}`} key={`radio-${radio}`}>
-              <span>{["Eassy", "Medium", "Hard"][radio]}</span>
-              <input
-                type="radio"
-                name="level"
-                id={`rlebel-${radio}`}
-                value={radio}
-                defaultChecked={props.config === radio}
-                onChange={() => props.setConfig(radio)}
-              />
-            </label>
-          ))}
+          
         </fieldset>
         <br />
-        <button onClick={(event) => props.setStart(true)}>Start</button>
-      </div>
+      </div> */}
     </>
   );
 };

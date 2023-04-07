@@ -1,3 +1,5 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+
 :root {
   --size-item: 50px;
 }
@@ -84,6 +86,7 @@ td div {
   max-height: var(--size-item);
   line-height: var(--size-item);
   color: black;
+  text-align: center;
 }
 
 .empty,
@@ -108,7 +111,7 @@ td div {
   justify-content: space-between;
 }
 
-.config {
+/* .config {
   display: flex;
   flex-direction: column;
   width: 300px;
@@ -131,7 +134,7 @@ td div {
 .config fieldset label {
   margin: 0 0 10px 0;
   cursor: pointer;
-}
+} */
 
 .btn-restart {
   width: 100%;
@@ -150,6 +153,23 @@ footer {
 .logo {
   width: 500px;
   margin: 0 0 50px 0;
+}
+
+.btn-keyboar {
+  width: 75px;
+  height: 75px;
+  min-width: 75px;
+  min-height: 75px;
+  max-width: 75px;
+  max-height: 75px;
+  background-color: gray;
+  color: black;
+  text-align: center !important;
+  padding: 20px 0 0 0;
+}
+
+.btn-keyboar:hover {
+  background-color: lightgray;
 }
 
 @media screen and (max-width: 500px) {

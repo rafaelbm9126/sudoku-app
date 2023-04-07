@@ -4,6 +4,7 @@ import { Config } from "./config";
 import { Display } from "./display";
 import Confetti from "react-confetti";
 import Logo from "../assets/logo2.svg";
+import { ShowKeyboard, Keyboard } from "./keyboard";
 
 function finalized(table: ItemSoduku[][]) {
   let count = 0;
@@ -17,6 +18,26 @@ function finalized(table: ItemSoduku[][]) {
   return count === 0;
 }
 
+function changeTableFromKeyBoard(
+  setAttempt: React.Dispatch<React.SetStateAction<number>>,
+  setTable: React.Dispatch<React.SetStateAction<ItemSoduku[][]>>,
+  table: ItemSoduku[][],
+  attempt: number,
+  itr: number,
+  itd: number
+) {
+  return (value: number) => {
+    const ntable = [...table];
+    setAttempt(attempt + 1);
+    ntable[itr][itd] = {
+      ...ntable[itr][itd],
+      value,
+      iserror: ntable[itr][itd].accept !== value,
+    };
+    setTable(ntable);
+  };
+}
+
 export const App: React.FunctionComponent<unknown> = (props) => {
   const sudoku = new Sudoku();
   const [table, setTable] = React.useState<ItemSoduku[][]>([]);
@@ -27,6 +48,12 @@ export const App: React.FunctionComponent<unknown> = (props) => {
   const [interv, setInterv] = React.useState(0);
   const [end, setEnd] = React.useState(false);
   const [rstrcount, setRstrcount] = React.useState(0);
+  const [editable, setEditable] = React.useState(true);
+  const [keyboard, setKeyboard] = React.useState<ShowKeyboard | null>(null);
+
+  React.useEffect(() => {
+    setEditable(window.innerWidth > 999);
+  }, []);
 
   React.useEffect(() => {
     setTable(sudoku.generateSudoku([30, 50, 80][config]));
@@ -62,6 +89,20 @@ export const App: React.FunctionComponent<unknown> = (props) => {
       <div className="app">
         <img className="logo" src={Logo} alt="logo" />
 
+        {!editable && keyboard && (
+          <Keyboard
+            setKeyboard={setKeyboard}
+            changeTableFromKeyBoard={changeTableFromKeyBoard(
+              setAttempt,
+              setTable,
+              table,
+              attempt,
+              keyboard.itr,
+              keyboard.itd,
+            )}
+          />
+        )}
+
         {end && (
           <div className="full-page">
             <Confetti width={1000} height={1000} />
@@ -81,12 +122,12 @@ export const App: React.FunctionComponent<unknown> = (props) => {
               setTable={setTable}
               end={end}
               rstrcount={rstrcount}
+              editable={editable}
+              setKeyboard={setKeyboard}
             />
           )}
         </div>
-        <footer>
-          rbm91 &copy; 2023
-        </footer>
+        <footer>rbm91 &copy; 2023</footer>
       </div>
     </>
   );
