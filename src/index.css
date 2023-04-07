@@ -111,30 +111,13 @@ td div {
   justify-content: space-between;
 }
 
-/* .config {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  justify-content: flex-start;
-  background-color: #b3d9ff;
-  padding: 10px;
-  border-radius: 5px;
+.config {
+  min-width: 300px;
 }
 
-.config button {
-  height: 50px;
-  cursor: pointer;
+.config .radio+.radio {
+  margin-left: 1.5em;
 }
-
-.config fieldset {
-  display: flex;
-  flex-direction: column;
-}
-
-.config fieldset label {
-  margin: 0 0 10px 0;
-  cursor: pointer;
-} */
 
 .btn-restart {
   width: 100%;

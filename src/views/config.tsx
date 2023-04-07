@@ -9,7 +9,10 @@ interface Props {
 export const Config: React.FunctionComponent<Props> = (props) => {
   return (
     <>
-      <div className="card is-fullwidth">
+      <div className="card config">
+        <header className="card-header">
+          <p className="card-header-title">Card header</p>
+        </header>
         <div className="card-content">
           <div className="content">
             <div className="control vertical">
