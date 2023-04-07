@@ -56,7 +56,7 @@ export const App: React.FunctionComponent<unknown> = (props) => {
   }, []);
 
   React.useEffect(() => {
-    setTable(sudoku.generateSudoku([30, 50, 80][config]));
+    setTable(sudoku.generateSudoku([1, 50, 80][config]));
   }, [config]);
 
   React.useEffect(() => {
