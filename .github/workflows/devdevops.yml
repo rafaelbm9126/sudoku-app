@@ -1,10 +1,10 @@
 #
-# Suit deploy test...-.
+# Suit deploy test...
 #
 name: deploy on dev
 on:
-  pull_request_review:
-    types: [submitted]
+  pull_request:
+    types: [closed]
     branches: [dev]
 jobs:
   build:
