@@ -1,17 +1,8 @@
-# 
-# Suit deploy test...
-# 
-name: deploy on dev
-on:
-  pull_request_review:
-    types:
-      - submitted
-    branches:
-      - dev
+name: hello-world
+on: push
 jobs:
-  build:
-    name: Build
+  my-job:
     runs-on: ubuntu-latest
     steps:
-      - name: test step
+      - name: my-step
         run: echo "Hello World!"
