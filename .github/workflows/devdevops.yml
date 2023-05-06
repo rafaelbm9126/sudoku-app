@@ -1,8 +1,16 @@
-name: hello-world
-on: push
+#
+# Suit deploy test...
+#
+name: deploy on dev
+on:
+  pull_request_review:
+    types: [submitted]
+    branches: [dev]
 jobs:
-  my-job:
+  build:
+    if: github.event.pull_request.merged == true
+    name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: my-step
+      - name: test step
         run: echo "Hello World!"
