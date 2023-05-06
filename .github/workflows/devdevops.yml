@@ -1,0 +1,21 @@
+name: deploy on dev
+on:
+  pull_request_review:
+    types:
+      - submitted
+    branches:
+      - dev
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          script: |
+            cd sheldon-backoffice
+            make deploy-bot
